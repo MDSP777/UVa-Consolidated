@@ -52,28 +52,20 @@ public class UVa_218 {
 		return cross(toVec(a, b), toVec(a, c)) > eps;
 	}
 	
-	static boolean collinear(Point a, Point b, Point c){
-		return cross(toVec(a, b), toVec(a, c)) < eps;
-	}
-	
 	static ArrayList<Point> findHull(ArrayList<Point> p){
 		ArrayList<Point> low = new ArrayList<>(), high = new ArrayList<>();
 		for(int i=0; i<p.size(); i++){
-			while(low.size()>=2 && !ccw(low.get(low.size()-2), low.get(low.size()-1), p.get(i))) //&& 
-					//!collinear(low.get(low.size()-2), low.get(low.size()-1), p.get(i))) 
+			while(low.size()>=2 && !ccw(low.get(low.size()-2), low.get(low.size()-1), p.get(i)))
 				low.remove(low.size()-1);
 			low.add(p.get(i));
 		}
 		for(int i=p.size()-1; i>=0; i--){
-			while(high.size()>=2 && !ccw(high.get(high.size()-2), high.get(high.size()-1), p.get(i))) //&& 
-					//!collinear(high.get(high.size()-2), high.get(high.size()-1), p.get(i))) 
+			while(high.size()>=2 && !ccw(high.get(high.size()-2), high.get(high.size()-1), p.get(i)))
 				high.remove(high.size()-1);
 			high.add(p.get(i));
 		}
 		
 		for(int i=1; i<high.size()-1; i++) low.add(high.get(i));
-//		for(int i=0; i<low.size(); i++)
-//			System.out.println(low.get(i).x+", "+low.get(i).y);
 		return low;
 	}
 	
@@ -90,7 +82,5 @@ public class UVa_218 {
 			if(Math.abs(x-o.x)<eps) return Double.compare(y, o.y);
 			return Double.compare(x, o.x);
 		}
-		
-		
 	}
 }
