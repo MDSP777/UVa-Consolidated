@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// note: Java version of solution will TLE
 int main(){
 	int n, g;
 	while(scanf("%d %d", &n, &g)!=EOF){
