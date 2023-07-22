@@ -73,9 +73,9 @@ int main(){
 							min(min(a.y, b.y), c.y)<=y && y<=max(max(a.y, b.y), c.y) &&
 							collinear(a, p, b)) total++;
 					} else {
-						double a1 = area(dist(p, a), dist(p, b), ab);
-						a1 += area(dist(p, a), dist(p, c), ac);
-						a1 += area(dist(p, b), dist(p, c), bc);
+						double a1 = collinear(a, p, b) ? 0 : area(dist(p, a), dist(p, b), ab);
+						a1 += collinear(a, p, c) ? 0 : area(dist(p, a), dist(p, c), ac);
+						a1 += collinear(b, p, c) ? 0 : area(dist(p, b), dist(p, c), bc);
 						if(abs(a1-A)<1e-4) total++;
 					}
 				}
